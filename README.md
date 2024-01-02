@@ -12,5 +12,10 @@ this is my assignment - (firdausi isa)
 
 
 This is a great web development starting point by Ismail Isah
+
+This is a web developer
+I am sumayyah bamba 
+
 This is a web development
+
 
