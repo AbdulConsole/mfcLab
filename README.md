@@ -8,3 +8,4 @@ This is a beautiful site in the making -
 
 This is a great web development starting point by Ismail Isah
 This is a web developer
+I am sumayyah bamba 
