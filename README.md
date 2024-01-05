@@ -15,4 +15,3 @@ This is a web developer - I am sumayyah bamba
 - **Firdausi Isa**
 - **Ismail Isah**
 - **Sumayyah bamba**
--**Abdullah**
