@@ -4,6 +4,10 @@ body{
   width: 100%;
 }
 
+h1 {
+  font-size: 30px;  
+}
+
 section {
   min-height: 100vh;
   display: flex;
@@ -28,4 +32,5 @@ section {
   margin: 0 auto;
   width: 200px;
   border-radius: 100px;
+  filter: drop-shadow(5px 5px 10px #000000);
 }
