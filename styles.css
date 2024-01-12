@@ -4,6 +4,51 @@ body{
   width: 100%;
 }
 
+.header-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 80%;
+      padding: 20px 50px;
+      background-color: transparent;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    .logo {
+      text-decoration: none;
+      color: aliceBlue;
+      font-size: larger;
+      font-weight: 700;
+    }
+    .navbar a {
+      position: relative;
+      font-size: large;
+      font-weight: 500;
+      color: aliceBlue;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+    .navbar a::before {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: aliceBlue;
+      transition: .3;
+    }
+    .navbar a:hover::before {
+      width: 100%;
+    }
+
+
+
+
+
+
 h1 {
   font-size: 30px;  
 }
