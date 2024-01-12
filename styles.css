@@ -34,3 +34,45 @@ section {
   border-radius: 100px;
   filter: drop-shadow(5px 5px 10px #000000);
 }
+
+.content-block {
+  flex-basis: 30%;
+}
+
+.content-section {
+  position: relative;
+  color: #000;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.content-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: url('https://images.unsplash.com/photo-1704957234554-686d9e700e21?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8');
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: 0.4;
+}
+
+.contact {
+  background-image: url('https://images.unsplash.com/photo-1523966211575-eb4a01e7dd51?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNvbnRhY3R8ZW58MHx8MHx8fDA%3D');
+  background-size: cover;
+  background-attachment: fixed;
+  color: black;
+  text-align: center;
+  font-size: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  .content-section {
+    flex-direction: column;
+  }
+}
