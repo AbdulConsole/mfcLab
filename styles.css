@@ -17,7 +17,7 @@ body{
       z-index: 100;
     }
     .logo {
-      text-decoration: none;
+     /* text-decoration: none;*/
       color: aliceBlue;
       font-size: larger;
       font-weight: 700;
