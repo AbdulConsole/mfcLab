@@ -116,8 +116,39 @@ section {
   font-size: 30px;
 }
 
+footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgba(93, 97, 149, 0.26);
+  color: whitesmoke;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 20px;
+  color: white;
+}
+
+li a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+
 @media only screen and (max-width: 600px) {
   .content-section {
     flex-direction: column;
   }
 }
+
