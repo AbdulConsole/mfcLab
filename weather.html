@@ -29,6 +29,7 @@
       background-color: purple;
       border-radius: 16px;
       padding: 20px;
+      color: whitesmoke;
     }
     .search-section {
       position: relative;
@@ -76,8 +77,26 @@
       padding: 0 20px 0 5px;
       cursor: pointer;
     }
+    .weather-box {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .weather-box .temperature {
+      position: relative;
+      font-size: 64px;
+      line-height: 1;
+      font-weight: 700;
+      margin: 20px 0 6px -30px;
+    }
+    .weather-box .temperature span {
+      position: absolute;
+      font-size: 24px;
+      margin-left: 4px;
+    }
   </style>
 </head>
+
+<!-- https://abdulconsole.github.io/mfcLab/weather.html -->
 
 <body>
   <div class="container">
@@ -90,7 +109,11 @@
     <div class="weather-box">
       <div class="box">
         <div class="info-weather">
-          <div class="weather"></div>
+          <div class="weather">
+            <img src="weatherImg/cloud.png" alt="weather">
+            <p class="temperature">16<span>⁰C</span></p>
+            <p class="description">Broken Cloud</p>
+          </div>
         </div>
       </div>
     </div>
