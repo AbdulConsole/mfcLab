@@ -15,6 +15,7 @@
     body {
       background-image: url('https://images.unsplash.com/photo-1558486012-817176f84c6d?q=80&w=670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
       background-size: fit;
+      background-position: center;
       background-repeat: no-repeat;
       
       display: flex;
@@ -26,10 +27,13 @@
       position: relative;
       width: 70%;
       height: 400px;
-      background-color: purple;
+      background-color: rgba(255, 255, 255, .35);
+      backdrop-filter: blur(3px);
+      border: 2px solid rgba(255, 255, 255, .5);
       border-radius: 16px;
       padding: 20px;
-      color: whitesmoke;
+      color: darkslategray;
+      box-shadow: 3px 3px 10px #2B349E;
     }
     .search-section {
       position: relative;
@@ -54,14 +58,14 @@
       outline: none;
       border-radius: 10px;
       font-size: 22px;
-      color: #fff;
+      color: darkslategray;
       font-weight: 500;
       text-transform: uppercase;
       padding: 0 30px 0 30px;
       overflow: none;
     }
     .search-section input::placeholder {
-      color: #fff;
+      color: darkslategray;
       text-transform: capitalize;
     }
     .search-section button {
@@ -73,7 +77,7 @@
       border: none;
       outline: none;
       font-size: 28px;
-      color: white;
+      color: darkslategray;
       padding: 0 20px 0 5px;
       cursor: pointer;
     }
@@ -97,6 +101,40 @@
     font-size: 22px;
     font-weight: 500;
     text-transform: capitalize;
+  }
+  .weather-details {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+  }
+  .weather-details .humidity, .weather-details .wind {
+    display: flex;
+    align-items: center;
+    width: 50%;
+  }
+  .weather-details .humidity {
+    padding-left: 20px;
+    justify-content: flex-start;
+  }
+  .weather-details .wind {
+    padding-right: 20px;
+    /*justify-content: flex-end;*/
+  }
+  .weather-details i {
+    font-size: 56px;
+    margin-right: 10px;
+  }
+  .weather-details span {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 500;
+  }
+  .weather-details p {
+    font-size: 14px;
+    font-weight: 500;
   }
   </style>
 </head>
@@ -122,7 +160,96 @@
         </div>
       </div>
     </div>
+    
+    <div class="weather-details">
+      
+      <div class="humidity">
+        <i class='bx bx-water'></i>
+        <div class="text">
+          <div class="info-humidity">
+            <span>0%</span>
+          </div>
+          <p>Humidity</p>
+        </div>
+      </div>
+      
+      <div class="wind">
+        <i class='bx bx-wind'></i>
+        <div class="text">
+          <div class="info-wind">
+            <span>0km/h</span>
+          </div>
+          <p>Wind Speed</p>
+        </div>
+      </div>
+    </div>
   </div>
+  
+  <script>
+    const container = document.querySelector('.container');
+    const search = document.querySelector('.search-section button');
+    const weatherBox = document.querySelector('.weather-box');
+    const weatherDetails = document.querySelector('.weather-details');
+    
+    search.addEventListener('click', () => {
+      
+      const API_KEY = '59b3d0b11e0c567ed7a1a11dd7e7ab71';
+      const city = document.querySelector('search-section input').value;
+      if (city == '') {
+        return;
+      }
+      fetch('https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}').then(response => response.json()).then(json => {
+        const image = document.querySelector('.weather-box img');
+        const temperature = document.querySelector('.weather-box .temperature');
+        const description = document.querySelector('.weather-box .description');
+        const humidity = document.querySelector('.weather-details .humidity span');
+        const wind = document.querySelector('.weather-details .wind span');
+        
+        switch(json.weather[0].main) {
+          case 'Clouds':
+            image.src = 'weatherImg/cloud.png';
+            break;
+          case 'Rain':
+            image.src = 'weatherImg/rain.png';
+            break;
+          case 'Drizzle':
+            image.src = 'weatherImg/drizzle.png';
+            break;
+          case 'Snow':
+            image.src = 'weatherImg/snow.png';
+            break;
+          case 'Clear':
+            image.src = 'weatherImg/sun.png';
+            break;
+          default:
+            image.src = 'weatherImg/cloud.png';
+        }
+        
+        temperature.innerHTML = `${json.main.temp.toFixed(0)}<span>⁰C</span>`;
+        description.innerHTML = json.weather[0].description;
+        humidity.innerHTML = `${json.main.humidity}%`;
+        wind.innerHTML = `${json.wind.speed.toFixed(0)} km/h`;
+        
+    })
+    .catch(() => {
+      weatherBox.style.display = 'none';
+      weatherDetails.style.display = 'none';
+      alert(`Please enter a valid city name.`);
+    });
+});
+  </script>
+  
+</body>
+
+</html>
+        
+      })
+      
+      
+    })
+    
+    
+  </script>
 </body>
 
 </html>
