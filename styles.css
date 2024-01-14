@@ -152,3 +152,11 @@ li a {
   }
 }
 
+button {
+  padding: 10px;
+  background: rgba(86, 202, 255, 1);
+  color: rgba(255, 255, 255, 1);
+  font-size: 25px;
+  border: none;
+  border-radius: 10px;
+}
