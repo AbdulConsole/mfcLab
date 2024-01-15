@@ -85,6 +85,12 @@
       text-align: center;
       margin: 20px 0;
     }
+    .weather-box, .weather-details, .not-found {
+      visibility: hidden;
+    }
+    .weather-box.active, .weather-details.active, .not-found.active {
+      visibility: visible;
+    }
     .weather-box .temperature {
       position: relative;
       font-size: 64px;
@@ -136,6 +142,22 @@
     font-size: 14px;
     font-weight: 500;
   }
+  .not-found {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 60px;
+  }
+  .not-found img {
+    width: 65%;
+  }
+  .not-found p {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 12px;
+  }
   </style>
 </head>
 
@@ -154,7 +176,7 @@
         <div class="info-weather">
           <div class="weather">
             <img src="weatherImg/cloud.png" alt="weather">
-            <p class="temperature">16<span>⁰C</span></p>
+            <p class="temperature">0<span>⁰C</span></p>
             <p class="description">Broken Clouds</p>
           </div>
         </div>
@@ -183,22 +205,51 @@
         </div>
       </div>
     </div>
+    
+    <div class="not-found">
+      <div class="box">
+        <img src="weatherImg/404.png">
+        <p>Opps! location not found.</p>
+      </div>
+    </div>
+  
   </div>
+  
+  
   
   <script>
     const container = document.querySelector('.container');
     const search = document.querySelector('.search-section button');
     const weatherBox = document.querySelector('.weather-box');
     const weatherDetails = document.querySelector('.weather-details');
+    const API_KEY = '59b3d0b11e0c567ed7a1a11dd7e7ab71';
+    const error404 = document.querySelector('.not-found');
+    
+    // Event Handler
     
     search.addEventListener('click', () => {
-      
-      const API_KEY = '59b3d0b11e0c567ed7a1a11dd7e7ab71';
-      const city = document.querySelector('search-section input').value;
+      const city = document.querySelector('.search-section input').value;
       if (city == '') {
         return;
       }
-      fetch('https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}').then(response => response.json()).then(json => {
+      
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`).then(response => response.json()).then(json => {
+        
+        if (json.code == '404') {
+          container.style.height = '250px';
+          weatherBox.classList.remove('active');
+          weatherDetails.classList.remove('active');
+          error404.classList.add('active');
+          return;
+          
+        }
+        
+        container.style.height = '400px';
+        weatherBox.classList.add('active');
+        weatherDetails.classList.add('active');
+        error404.classList.remove('active');
+          
+        
         const image = document.querySelector('.weather-box img');
         const temperature = document.querySelector('.weather-box .temperature');
         const description = document.querySelector('.weather-box .description');
@@ -212,44 +263,39 @@
           case 'Rain':
             image.src = 'weatherImg/rain.png';
             break;
-          case 'Drizzle':
-            image.src = 'weatherImg/drizzle.png';
+          case 'Mist':
+            image.src = 'weatherImg/mist.png';
+            break;
+          case 'Haze':
+            image.src = 'weatherImg/mist.png';
             break;
           case 'Snow':
             image.src = 'weatherImg/snow.png';
             break;
           case 'Clear':
-            image.src = 'weatherImg/sun.png';
+            image.src = 'weatherImg/clear.png';
             break;
           default:
-            image.src = 'weatherImg/cloud.png';
+            image.src = 'weatherImg/404.png';
         }
         
-        temperature.innerHTML = `${json.main.temp.toFixed(0)}<span>⁰C</span>`;
-        description.innerHTML = json.weather[0].description;
+        temperature.innerHTML = `${parseInt(json.main.temp)}<span>⁰C</span>`;
+        description.innerHTML = `${json.weather[0].description}`;
         humidity.innerHTML = `${json.main.humidity}%`;
-        wind.innerHTML = `${json.wind.speed.toFixed(0)} km/h`;
+        wind.innerHTML = `${parseInt(json.wind.speed)}km/h`;
         
-    })
-    .catch(() => {
-      weatherBox.style.display = 'none';
-      weatherDetails.style.display = 'none';
-      alert(`Please enter a valid city name.`);
+        
+        console.log(city + ' ' +json.weather[0].main);
+      });
+      
     });
-});
   </script>
   
 </body>
 
 </html>
-        
-      })
-      
-      
-    })
-    
-    
-  </script>
-</body>
 
-</html>
+
+
+
+
