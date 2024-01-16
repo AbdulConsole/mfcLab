@@ -1,48 +1,52 @@
-body{
+body {
   margin: 0;
   padding: 0;
   width: 100%;
 }
 
 .header-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 80%;
-      padding: 20px 50px;
-      background-color: transparent;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-    }
-    .logo {
-     /* text-decoration: none;*/
-      color: aliceBlue;
-      font-size: larger;
-      font-weight: 700;
-    }
-    .navbar a {
-      position: relative;
-      font-size: large;
-      font-weight: 500;
-      color: aliceBlue;
-      text-decoration: none;
-      margin-left: 10px;
-    }
-    .navbar a::before {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 0%;
-      height: 2px;
-      background: aliceBlue;
-      transition: .3;
-    }
-    .navbar a:hover::before {
-      width: 100%;
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80%;
+  padding: 20px 50px;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+}
+
+.logo {
+  /* text-decoration: none;*/
+  color: aliceBlue;
+  font-size: larger;
+  font-weight: 700;
+}
+
+.navbar a {
+  position: relative;
+  font-size: large;
+  font-weight: 500;
+  color: aliceBlue;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.navbar a::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: aliceBlue;
+  transition: .3;
+}
+
+.navbar a:hover::before {
+  width: 100%;
+}
 
 
 
@@ -50,7 +54,7 @@ body{
 
 
 h1 {
-  font-size: 30px;  
+  font-size: 30px;
 }
 
 section {
@@ -93,7 +97,12 @@ section {
   align-items: center;
   flex-wrap: wrap;
 }
-
+#home h1 {
+  visibility: visible;
+}
+#home h2 {
+  visibility: hidden;
+}
 .content-section::before {
   content: "";
   position: absolute;
@@ -129,6 +138,7 @@ footer {
   width: 100%;
   text-align: center;
 }
+
 footer ul {
   list-style: none;
   margin: 0;
@@ -145,13 +155,6 @@ li a {
   color: whitesmoke;
 }
 
-
-@media only screen and (max-width: 600px) {
-  .content-section {
-    flex-direction: column;
-  }
-}
-
 button {
   padding: 10px;
   background: rgba(86, 202, 255, 1);
@@ -159,4 +162,37 @@ button {
   font-size: 25px;
   border: none;
   border-radius: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .content-section {
+    flex-direction: column;
+  }
+}
+
+@media (min-width:900px) {
+  .header-nav {
+    width: 100%;
+  }
+  .header-nav .navbar {
+    margin-right: 100px;
+  }
+  .navbar a {
+    font-weight: 700;
+    color: blueviolet;
+  }
+  .profile-image {
+    content: url('../img/pc.png');
+  }
+  .header-nav .logo::before {
+    content: 'PC Store-';
+  }
+  #home h1 {
+    visibility: hidden;
+  }
+  #home h2 {
+    margin-top: -100px;
+    visibility: visible;
+  }
+
 }
