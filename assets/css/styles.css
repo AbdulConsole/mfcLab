@@ -22,6 +22,8 @@ body {
   color: aliceBlue;
   font-size: larger;
   font-weight: 700;
+  width: 40%;
+  filter: drop-shadow(5px 5px 10px #fff);
 }
 
 .navbar a {
