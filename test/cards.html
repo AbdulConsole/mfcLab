@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cards ♠️</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #e5e5e5;
+      height: 100vh;
+    }
+    .col {
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .card {
+      border: 2px solid white;
+      border-radius: 20px 20px 0 0;
+      background: whitesmoke;
+      width: 45%;
+      height: 350px;
+      box-shadow: 2px 2px 4px #000;
+    }
+   .card .img {
+      width: 100%;
+      height: 70%;
+      background-image: url('https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dHNoaXJ0fGVufDB8fDB8fHww');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #040A47;
+      text-shadow: 1px 1px 1px #000;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+   }
+    .text {
+      display: flex;
+      flex-direction: column;
+      height: 30%;
+      overflow: hidden;
+      padding: 3px;
+      margin-top: -20px; by
+    }
+    .action {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content:space-between;
+      padding: 5px;
+      color: #515794;
+      font-size: 24px;
+    }
+    .action p {
+      background-color: #ACCCE0;
+      padding: 4px;
+      border-radius: 5px;
+    }
+    .action p::before {
+      content: "₦";
+    }
+    .action button {
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #515794;
+      color: floralwhite;
+      font-size: 24px;
+    }
+    .details {
+      margin-top: -20px;
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Cards</h2>
+    <div class="col">
+      <div class="card">
+        <div class="img">
+          <h2>T-Shirt</h2>
+        </div>
+        <div class="text">
+          <div class="action">
+            <p>200</p>
+            <button>Add to cart</button>
+          </div>
+          <p class="details">Nice t-shirt from China. At a discount price.</p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="img">
+          <h2>T-Shirt</h2>
+        </div>
+        <div class="text">
+          <div class="action">
+            <p>200</p>
+            <button>Add to cart</button>
+          </div>
+          <p class="details">Nice t-shirt from China. At a discount price.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div class="card">
+        <div class="img">
+          <h2>T-Shirt</h2>
+        </div>
+        <div class="text">
+          <div class="action">
+            <p>200</p>
+            <button>Add to cart</button>
+          </div>
+          <p class="details">Nice t-shirt from China. At a discount price.</p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="img">
+          <h2>T-Shirt</h2>
+        </div>
+        <div class="text">
+          <div class="action">
+            <p>200</p>
+            <button>Add to cart</button>
+          </div>
+          <p class="details">Nice t-shirt from China. At a discount price.</p>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="col">
+      <div class="card">
+        <div class="img">
+          <h2>T-Shirt</h2>
+        </div>
+        <div class="text">
+          <div class="action">
+            <p>200</p>
+            <button>Add to cart</button>
+          </div>
+          <p class="details">Nice t-shirt from China. At a discount price.</p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="img">
+          <h2>T-Shirt</h2>
+        </div>
+        <div class="text">
+          <div class="action">
+            <p>200</p>
+            <button>Add to cart</button>
+          </div>
+          <p class="details">Nice t-shirt from China. At a discount price.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
