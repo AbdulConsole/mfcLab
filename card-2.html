@@ -5,12 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>card</title>
     <style>
-        body {
-            font-family: Verdana, Tahoma, sans-serif;
-            background: #ddd;
-            color: #333;
-        }
+      body {
+        font-family: Verdana, Tahoma, sans-serif;
+        background: #ddd;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width:100%;
+        position: absolute;
+      }
+        
+      .top{
+        position: fixed;
+        top: 0;
+        text-align: center;
+        background-color: #ccc;
+        color: white;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 2px 2px 10px #000;
+      }
+      .top > p {
+        color: darkslategray;
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .top .cart img{
+        width: 50px;
+        margin: 0px 10px;
+        padding: 3px;
+      }
+        
         .head {
+          margin-top: 60px;
           text-align: center;
         }
         .container {
@@ -32,7 +66,7 @@
             justify-content: space-between;
             align-items: baseline;
         }
-        img {
+        .card > img {
             width: 500px;
         }
         .add-to-cart {
@@ -58,20 +92,27 @@
           }
           .card {
             padding: 5px;
-            width: 70%;
+            width: 80%;
+            /*overflow: hidden;*/
           }
-          img {
-            width: 326px;
-          }
-        }
-        @media only screen and (max-width: 320px) {
-          img {
-            width: 237px;
+          .card > img {
+            width: 100%;
           }
         }
+       
     </style>
 </head>
 <body>
+  
+  <div class="top">
+      <p>CREAM STORE</p>
+      <div class="cart">
+        <img src="assets/img/cart.png" alt="Cart">
+        <span>0</span>
+      </div>
+     
+   
+  </div>
 
   <h1 class="head">My Cream Store!</h1>
 
