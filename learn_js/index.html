@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learning JavaScript</title>
+</head>
+
+<body>
+  
+  <h1>Learning Js with me.</h1>
+  <input type="text" id="name" placeholder="enter your name">
+  <button id="btn">Submit</button>
+  
+  
+  <script>
+    //Js codes
+    //document.write('<h2>Hi</h2>');
+    
+    //variable - number, string (name), boolean (true, false), array 
+    //2 + x = 5
+    // var place holder
+    //x = 3
+    //var age = 20;
+    //var name = 'Abdul';
+    
+    //document.write(age);
+    //document.write('My name is '+name+ ' and I am '+age+' years old'); // concatenate
+    
+    // flow
+    var button = document.getElementById('btn');
+    
+    button.addEventListener('click', appearBelow);
+   
+    function appearBelow() {
+      //function code lives here
+      var name = document.getElementById('name');
+      alert(name.value);
+    }
+  </script>
+</body>
+
+</html>
