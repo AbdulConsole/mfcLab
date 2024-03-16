@@ -12,6 +12,7 @@
   <h1>Learning Js with me.</h1>
   <input type="text" id="name" placeholder="enter your name">
   <button id="btn">Submit</button>
+  <p id="op"></p>
   
   
   <script>
@@ -23,20 +24,22 @@
     // var place holder
     //x = 3
     //var age = 20;
-    //var name = 'Abdul';
+    //var name = 'Abdul'; // '8', 8
     
     //document.write(age);
     //document.write('My name is '+name+ ' and I am '+age+' years old'); // concatenate
     
     // flow
     var button = document.getElementById('btn');
+    var output = document.getElementById('op');
     
     button.addEventListener('click', appearBelow);
    
     function appearBelow() {
       //function code lives here
-      var name = document.getElementById('name');
-      alert(name.value);
+      var name = document.getElementById('name').value;
+      output.textContent = 'You are '+ name;
+      //alert('Your name is '+name);
     }
   </script>
 </body>
