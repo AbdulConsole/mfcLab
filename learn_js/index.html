@@ -5,13 +5,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Learning JavaScript</title>
+  <style>
+    body {
+      background-color: #BBC0F4;
+      width: 100%;
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      font-size: 40px;
+      color: #343541;
+    }
+    input, button{
+      height: 40px;
+      width: 70%;
+      text-align: center;
+      font-size: 28px;
+      color: #343541;
+      text-transform: uppercase;
+      border-radius: 8px;
+      border: none;
+      box-shadow: 1px 1px 2px #343541;
+      margin-bottom: 30px;
+    }
+    button {
+      background-color: #4B55BA;
+      color: #BBC0F4;
+    }
+    #op {
+      text-align: center;
+      font-size: 28px;
+      color: #37B67B;
+    }
+    #btn-clear {
+      background-color: #ADB5DC;
+      color: #4B55BA;
+    }
+  </style>
 </head>
 
 <body>
   
-  <h1>Learning Js with me.</h1>
+  <h1>Learning Js with Abdul.</h1>
   <input type="text" id="name" placeholder="enter your name">
   <button id="btn">Submit</button>
+  <button id="btn-clear">Clear</button>
   <p id="op"></p>
   
   
@@ -32,14 +73,23 @@
     // flow
     var button = document.getElementById('btn');
     var output = document.getElementById('op');
+  
+    var clear = document.getElementById('btn-clear');
     
     button.addEventListener('click', appearBelow);
+    clear.addEventListener('click', clearOp);
    
     function appearBelow() {
       //function code lives here
-      var name = document.getElementById('name').value;
-      output.textContent = 'You are '+ name;
+      var name = document.getElementById('name');
+      output.textContent = 'You are '+ name.value; 
       //alert('Your name is '+name);
+    }
+    
+    function clearOp() {
+      var name = document.getElementById('name');
+      name.value = '';
+      output.textContent = '';
     }
   </script>
 </body>
