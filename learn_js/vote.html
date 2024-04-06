@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: rgba(248, 249, 255, 1);
+    }
+    .home {
+      width: 90%;
+      height: auto;
+      margin-top: 100px;
+      background-color: rgba(168, 170, 190, 1);
+      border-radius: 5px;
+      padding: 10px;
+    }
+    .option {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+    button {
+      padding: 7px;
+      border: none;
+      border-radius: 4px;
+      font-size: 20px;
+    }
+    .countVote {
+      font-size: 25px;
+      font-weight: 700;
+      color: rgba(68, 78, 187, 1);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="home">
+    <h2>Man of the match</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg/330px-Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg" alt="messi">
+    <h3>L. Messi</h3>
+    <p>Vote him Man of the match or against him.</p>
+    <div class="option">
+      <button type="submit" id="up">Up vote</button>
+      <p class="countVote" id="vote">0</p>
+      <button type="submit" id="down">Down vote</button>
+    </div>
+  </div>
+  
+  <script>
+    // grab dom
+    var upVote = document.getElementById('up');
+    var downVote = document.getElementById('down');
+    var voteCount = document.getElementById('vote');
+    var vote = 0;
+    
+    // Listen Event
+    upVote.addEventListener('click', incVote);
+    downVote.addEventListener('click', decVote);
+    
+    // define function
+    function incVote() {
+      vote = vote + 1;
+      voteCount.textContent = vote;
+    }
+    
+    function decVote() {
+      vote = vote - 1;
+      voteCount.textContent = vote;
+    }
+  </script>
+  
+</body>
+
+</html>
