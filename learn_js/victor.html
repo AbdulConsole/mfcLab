@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Viewer</title>
+</head>
+<body>
+  <h1>Member Viewer</h1>
+  <div>
+    <img id="memberImage" src="" alt="Member Image" style="max-width: 200px;">
+    <p id="memberName"></p>
+    <p id="memberEmail"></p>
+  </div>
+  <button id="prevBtn" onclick="prevMember()">Previous</button>
+  <button id="nextBtn" onclick="nextMember()">Next</button>
+
+  <script>
+    const members = {
+      0: {
+        name: "John McAfee",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/John_McAfee_by_Gage_Skidmore.jpg/330px-John_McAfee_by_Gage_Skidmore.jpg",
+        email: "mcjohn@mail.io"
+      },
+      1: {
+        name: "Mark Zuckerberg",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg/330px-Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg",
+        email: "markzucker@mail.io"
+      },
+      2: {
+        name: "Bill Gates",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Bill_Gates_-_2023_-_P062021-967902_%28cropped%29.jpg/330px-Bill_Gates_-_2023_-_P062021-967902_%28cropped%29.jpg",
+        email: "billgate@mail.io"
+      },
+      3: {
+        name: "Elon Musk",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Elon_Musk_Colorado_2022_%28cropped2%29.jpg/330px-Elon_Musk_Colorado_2022_%28cropped2%29.jpg",
+        email: "elonmusk@mail.io"
+      }
+    };
+
+    let currentMemberIndex = 0;
+
+    function showMember(index) {
+      const member = members[index];
+      document.getElementById("memberImage").src = member.image_url;
+      document.getElementById("memberName").innerText = "Name: " + member.name;
+      document.getElementById("memberEmail").innerText = "Email: " + member.email;
+    }
+
+    function prevMember() {
+      if (currentMemberIndex > 0) {
+        currentMemberIndex--;
+      } else {
+        currentMemberIndex = Object.keys(members).length - 1;
+      }
+      showMember(currentMemberIndex);
+    }
+
+    function nextMember() {
+      if (currentMemberIndex < Object.keys(members).length - 1) {
+        currentMemberIndex++;
+      } else {
+        currentMemberIndex = 0;
+      }
+      showMember(currentMemberIndex);
+    }
+
+    // Show the first member initially
+    showMember(currentMemberIndex);
+  </script>
+</body>
+</html>
