@@ -4,7 +4,7 @@
     <head>
         <title>Eid Mubarak JavaScript</title>
         <style>
-          body { margin:20px; background:hsl(70, 31%, 85%); text-align:center; }
+          body { margin:0px; background:hsl(70, 31%, 85%); text-align:center; }
 
 .balloon {
   display:inline-block;
@@ -83,6 +83,18 @@
 
 .balloon:nth-child(11){ background:hsl(203,48%,57%); animation-duration:8.5s; }
 .balloon:nth-child(11):before { color:hsl(203,78%,46%);  }
+
+        .footer {
+          position: fixed;
+          bottom: 0px;
+          width: 100%;
+          z-index: 10;
+          background-color: rgba(10, 130, 199, 0.59);
+          color:rgba(229, 239, 245, 1);
+          font-size: 20px;
+          font-weight: 500;
+          padding: 7px;
+        }
         </style>
        <script type="text/javascript">
 // <![CDATA[
@@ -259,6 +271,8 @@ function set_width() {
 <div class="balloon">A</div>
 <div class="balloon">K</div>
 
+
+<div class="footer">With ❤️ by AbdulConsole.</div>
 
     </body>
 </html>
