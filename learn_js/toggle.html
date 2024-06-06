@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <title></title>
+  <style>
+  * {
+    background: #A4A6BB;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+  }
+  .card {
+    width: 80%;
+    height: 200px;
+    background: #FFFFFF;
+    border-radius: 10px;
+      
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .menu {
+    font-size: 40px;
+    margin: 10px 0 0 10px;
+  }
+  .head {
+    background-color: #6E6F73;
+    width: 100%;
+    height: 50px;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  </style>
+</head>
+
+<body>
+  
+  <div class="head">
+    <i class="menu fa fa-bars" onclick="toggle()"></i>
+    <i class="menu fa fa-bars" onclick="toggle()"></i>
+  </div>
+  
+  <i class="menu fa fa-bars" onclick="toggle()"></i>
+    
+  <div class="container">
+    <div id="card" class="card">
+      <p>Card</p>
+      <button>Close</button>
+    </div>
+  </div>
+
+
+  
+  
+  <script>
+  
+  
+  
+    function toggle() {
+      //element we want to toggle
+      var card = document.getElementById('card');
+      
+      if (card.style.display != "none") {
+        card.style.display = 'none';
+      } else {
+        card.style.display = 'flex';
+      }
+      //other codes
+    }
+    
+// maths expression
+// <, >, =, <=, >=, ==, !=
+// logical expression
+// AND(both true) OR(atleast one true) NOT(opposite)
+
+
+
+    
+  </script>
+</body>
+
+</html>

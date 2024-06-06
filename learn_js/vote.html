@@ -56,7 +56,7 @@
       <button type="submit" id="down">Down vote</button>
     </div>
   </div>
-  
+ 
   <script>
     // grab dom
     var upVote = document.getElementById('up');
@@ -70,7 +70,8 @@
     
     // define function
     function incVote() {
-      vote = vote + 1;
+      //vote = vote + 1;
+      vote += 1;
       voteCount.textContent = vote;
     }
     
