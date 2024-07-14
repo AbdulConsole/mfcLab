@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .pop {
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 7px;
+      background: #7F89EF;
+      color: white;
+      width: 100px;
+    }
+    .modal {
+      background: #ADAEBE;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .hide {
+      visibility: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="pop">Pop up</button>
+  
+  <div class="modal hide">
+    <p>I am the hidden box</p>
+  </div>
+  
+  <script>
+    let pop = document.querySelector('.pop');
+    let modal = document.querySelector('.modal');
+    
+    pop.addEventListener('click', popFunction);
+    
+    function popFunction() {
+      modal.classList.toggle("hide");
+    }
+  </script>
+</body>
+
+</html>
