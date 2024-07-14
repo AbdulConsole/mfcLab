@@ -5,53 +5,90 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      background: #D0D1D8;
     }
     .pop {
-      padding: 10px;
+      padding: 15px;
       font-size: 18px;
+      border: none;
       border-radius: 7px;
       background: #7F89EF;
       color: white;
-      width: 100px;
+      font-size: 22px;
+      font-weight: 600;
+      min-width: 100px;
+      box-shadow: 2px 2px 15px #42477D;
+    }
+    .pop::hover {
+      box-shadow: 1px 1px 5px #42477D;
+      background: #7A84EA;
     }
     .modal {
-      background: #ADAEBE;
-      width: 200px;
-      height: 200px;
+      background: #7F89EF;
+      color: #E3E3EC;
+      width: 300px;
+      min-height: 200px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       margin-top: 20px;
+      font-size: 22px;
+      position: absolute;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 2px 2px 15px #42477D;
     }
     .hide {
       visibility: hidden;
     }
+    #close {
+      /*text-decoration: underline;*/
+      margin: 15px;
+      font-size: 28px;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  
   </style>
 </head>
 
 <body>
-  <button class="pop">Pop up</button>
+  <button class="pop"><i class="fa-solid fa-user-plus"></i>Add a new user</button>
   
   <div class="modal hide">
-    <p>I am the hidden box</p>
+    <p id="close"><i class="fa-solid fa-xmark"></i></p>
+    <p> Add a new user here</p>
   </div>
   
   <script>
     let pop = document.querySelector('.pop');
     let modal = document.querySelector('.modal');
+    let close = document.querySelector('#close');
     
     pop.addEventListener('click', popFunction);
+    close.addEventListener('click', closeModal);
     
     function popFunction() {
       modal.classList.toggle("hide");
+    }
+    
+    function closeModal() {
+      modal.classList.add("hide");
     }
   </script>
 </body>
