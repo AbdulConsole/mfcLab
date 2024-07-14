@@ -51,37 +51,70 @@
       border: none;
       border-radius: 10px;
       box-shadow: 2px 2px 15px #42477D;
+      padding: 10px;
     }
     .hide {
       visibility: hidden;
     }
     #close {
-      /*text-decoration: underline;*/
       margin: 15px;
       font-size: 28px;
       position: absolute;
       top: 0;
       right: 0;
     }
+    input, .btn {
+      font-size: 25px;
+      padding: 5px;
+      width: 200px;
+      margin: 15px;
+      border: none;
+      border-radius: 5px;
+    }
+    .head {
+      font-size: 28px;
+      font-weight: 700;
+      color: fff;
+      margin-bottom: 15px;
+    }
+    #msg {
+      font-size: 18px;
+      width: 200px;
+      border-radius: 5px;
+      border: none;
+    }
+    .btn {
+      margin-bottom: 20px;
+      background: #fff;
+      color: #7F89EF;
+      font-weight: 800;
+    }
   
   </style>
 </head>
 
 <body>
-  <button class="pop"><i class="fa-solid fa-user-plus"></i>Add a new user</button>
+  <button class="pop"><i class="fa-solid fa-message"></i> Add a new message</button>
   
   <div class="modal hide">
     <p id="close"><i class="fa-solid fa-xmark"></i></p>
-    <p> Add a new user here</p>
+    <p class="head"> Add a new user</p>
+    <input type="text" id="username" placeholder="Username">
+    <textarea id="msg" cols="25" rows="5" placeholder="Some message"></textarea>
+    <button class="btn">Submit</button>
   </div>
   
   <script>
     let pop = document.querySelector('.pop');
     let modal = document.querySelector('.modal');
     let close = document.querySelector('#close');
+    let btn = document.querySelector('.btn');
+    let username = document.querySelector('#username');
+    let msg = document.querySelector('#msg');
     
     pop.addEventListener('click', popFunction);
     close.addEventListener('click', closeModal);
+    btn.addEventListener('click', submitMessage);
     
     function popFunction() {
       modal.classList.toggle("hide");
@@ -89,6 +122,11 @@
     
     function closeModal() {
       modal.classList.add("hide");
+    }
+    
+    function submitMessage() {
+      // handle message and username with local storage
+      alert('Function not yet available!')
     }
   </script>
 </body>
