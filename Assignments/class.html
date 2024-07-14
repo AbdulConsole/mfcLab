@@ -40,7 +40,7 @@
       background: #7F89EF;
       color: #E3E3EC;
       width: 300px;
-      min-height: 200px;
+      height: 300px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -65,11 +65,15 @@
     }
     input, .btn {
       font-size: 25px;
-      padding: 5px;
+      padding: 10px;
       width: 200px;
       margin: 15px;
       border: none;
       border-radius: 5px;
+    }
+    textarea {
+      margin: 10px;
+      padding: 10px;
     }
     .head {
       font-size: 22px;
@@ -89,7 +93,12 @@
       color: #7F89EF;
       font-weight: 800;
     }
-  
+    .error {
+      color: red;
+      font-size: 20px;
+      margin: 10px;
+      margin-top: -15px;
+    }
   </style>
 </head>
 
@@ -99,18 +108,29 @@
   <div class="modal hide">
     <p id="close"><i class="fa-solid fa-xmark"></i></p>
     <p class="head"> Add a new message</p>
-    <input type="text" id="username" placeholder="Username">
-    <textarea id="msg" cols="25" rows="5" placeholder="Some message"></textarea>
+    
+   <div class="m">
+     <input type="text" id="username" placeholder="Username">
+   </div>
+    
+   <div class="n">
+       <textarea id="msg" placeholder="message"></textarea>
+   </div>
+   
     <button class="btn">Submit</button>
+   
   </div>
   
   <script>
-    let pop = document.querySelector('.pop');
+    const pop = document.querySelector('.pop');
     let modal = document.querySelector('.modal');
-    let close = document.querySelector('#close');
-    let btn = document.querySelector('.btn');
+    const close = document.querySelector('#close');
+    const btn = document.querySelector('.btn');
     let username = document.querySelector('#username');
+    const mParent = document.querySelector('.m');
     let msg = document.querySelector('#msg');
+    const nParent = document.querySelector('.n');
+    let error = document.querySelector('.error');
     
     pop.addEventListener('click', popFunction);
     close.addEventListener('click', closeModal);
@@ -122,11 +142,44 @@
     
     function closeModal() {
       modal.classList.add("hide");
+      
+      if (username.value != '') {
+        username.value = '';
+      }
+      if (msg.value != '') {
+        msg.value = '';
+      }
     }
     
     function submitMessage() {
       // handle message and username with local storage
-      alert('Function not yet available!')
+      if (username.value == '') {
+        let newMsg = document.createElement('p');
+        newMsg.textContent = 'uname can not be empty';
+        newMsg.classList.add('error');
+        mParent.appendChild(newMsg);
+        
+        setTimeout(() => {
+          mParent.removeChild(newMsg);
+        }, 4000);
+      }
+      if (msg.value == '') {
+        let newMsg = document.createElement('p');
+        newMsg.textContent = 'msg can not be empty';
+        newMsg.classList.add('error');
+        nParent.appendChild(newMsg);
+        
+        setTimeout(() => {
+          nParent.removeChild(newMsg);
+        }, 4000);
+      }
+      
+      if (msg.value != '' && username.value != '') {
+        // add to local storage 
+        alert('All filled, but function not yet available!');
+      }
+     
+      
     }
   </script>
 </body>
