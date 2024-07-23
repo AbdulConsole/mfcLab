@@ -5,13 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
       display: flex;
       flex-direction: column;
@@ -20,6 +21,7 @@
       height: 100vh;
       background: #D0D1D8;
     }
+
     .pop {
       padding: 15px;
       font-size: 18px;
@@ -32,11 +34,14 @@
       min-width: 100px;
       margin-top: 10px;
       box-shadow: 2px 2px 15px #42477D;
+      cursor: pointer;
     }
-    .pop::hover {
+
+    .pop:hover {
       box-shadow: 1px 1px 5px #42477D;
       background: #7A84EA;
     }
+
     .modal {
       background: #7F89EF;
       color: #E3E3EC;
@@ -50,23 +55,27 @@
       font-size: 22px;
       position: absolute;
       transform: translateY(50%);
-      
       border: none;
       border-radius: 10px;
       box-shadow: 2px 2px 15px #42477D;
       padding: 10px;
     }
+
     .hide {
       visibility: hidden;
     }
+
     #close {
       margin: 10px;
       font-size: 28px;
       position: absolute;
       top: 0;
       right: 0;
+      cursor: pointer;
     }
-    input, .btn {
+
+    input,
+    .btn {
       font-size: 25px;
       padding: 10px;
       width: 200px;
@@ -74,28 +83,34 @@
       border: none;
       border-radius: 5px;
     }
+
     textarea {
       margin: 10px;
       padding: 10px;
     }
+
     .head {
       font-size: 22px;
       font-weight: 700;
-      color: fff;
+      color: #fff;
       margin-bottom: 5px;
     }
+
     #msg {
       font-size: 18px;
       width: 200px;
       border-radius: 5px;
       border: none;
     }
+
     .btn {
       margin-bottom: 20px;
       background: #fff;
       color: #7F89EF;
       font-weight: 800;
+      cursor: pointer;
     }
+
     .error {
       color: red;
       font-size: 20px;
@@ -107,24 +122,24 @@
 
 <body>
   <button class="pop"><i class="fa-solid fa-message"></i> Add a new message</button>
-  <!-- <div class="message-items"></div> -->
-  
+  <div class="message-items"></div>
+
   <div class="modal hide">
     <p id="close"><i class="fa-solid fa-xmark"></i></p>
     <p class="head"> Add a new message</p>
-    
-   <div class="m">
-     <input type="text" id="username" placeholder="Username">
-   </div>
-    
-   <div class="n">
-       <textarea id="msg" placeholder="message"></textarea>
-   </div>
-   
+
+    <div class="m">
+      <input type="text" id="username" placeholder="Username">
+    </div>
+
+    <div class="n">
+      <textarea id="msg" placeholder="message"></textarea>
+    </div>
+
     <button class="btn">Submit</button>
-   
+
   </div>
-  
+
   <script>
     const pop = document.querySelector('.pop');
     let modal = document.querySelector('.modal');
@@ -134,20 +149,19 @@
     const mParent = document.querySelector('.m');
     let msg = document.querySelector('#msg');
     const nParent = document.querySelector('.n');
-    let error = document.querySelector('.error');
-    let message-items = document.querySelector('.message-items');
-    
+    const messageItems = document.querySelector('.message-items');
+
     pop.addEventListener('click', popFunction);
     close.addEventListener('click', closeModal);
     btn.addEventListener('click', submitMessage);
-    
+
     function popFunction() {
       modal.classList.toggle("hide");
     }
-    
+
     function closeModal() {
       modal.classList.add("hide");
-      
+
       if (username.value != '') {
         username.value = '';
       }
@@ -155,7 +169,7 @@
         msg.value = '';
       }
     }
-    
+
     function submitMessage() {
       // handle message and username with local storage
       if (username.value == '') {
@@ -163,7 +177,7 @@
         newMsg.textContent = 'uname can not be empty';
         newMsg.classList.add('error');
         mParent.appendChild(newMsg);
-        
+
         setTimeout(() => {
           mParent.removeChild(newMsg);
         }, 4000);
@@ -173,87 +187,35 @@
         newMsg.textContent = 'msg can not be empty';
         newMsg.classList.add('error');
         nParent.appendChild(newMsg);
-        
+
         setTimeout(() => {
           nParent.removeChild(newMsg);
         }, 4000);
       }
-      
+
       if (msg.value != '' && username.value != '') {
         // add to local storage 
-        alert('All filled, but function not yet available!');
-        localStorage.setItem(username, msg);
+        localStorage.setItem(username.value, msg.value);
+        displayMessages();
+        closeModal();
+      }
+    }
+
+    function displayMessages() {
+      messageItems.innerHTML = ''; // Clear existing messages
+      for (let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i);
         
+        let value = localStorage.getItem(key);
+        
+        let messageElement = document.createElement('div');
+        messageElement.innerHTML = `<strong>${key}:</strong> ${value}`;
+        messageItems.appendChild(messageElement);
       }
     }
-    
-    
-   /* let addMsg = () => {
-        let msgText = msg.value;
-        let usernameText = username.value;
-        setData(msgText);
-        listMsg();
-        }
-    }
-   
-    let listMsg = () => {
-        let html = ``;
-        let data = getData();
-        if(data){
-            html += `<ol>`;
-            data.forEach((value,item
-            ) => {
-                html += `<li>${value} &nbsp;&nbsp;&nbsp;<button onclick="removeData(${item})">Remove</button></li>`;
-            });
-            html += `</ol>`;
-        }
-        document.getElementById('message-items').innerHTML = html;
-    }
-    
-    let getData = (item = null) => {
-        let data = JSON.parse(localStorage.getItem('username')); 
-        if(data){
 
-            if(item) {
-                if(data.indexOf(item) != -1){
-                    return data[item];
-                }else{
-                    return false;
-                }
-            }
-            return data;
-        }
-        return false;
-    }
-    
-    listTodo();
-    
-    let setData = (item) => {
-        if(getData(item) != false) {
-            alert("Item already added in todo");
-        }else{
-            let data = getData(); // call getdata handler for getting  data from list 
-            data = (data != false) ? data : []; 
-            data.push(item);
-            data = JSON.stringify(data);
-            localStorage.setItem('msg',data);
-        }
-    }
-    
-    let removeData = (itemId) => {
-      let data = getData();
-      if(data){
-        let newData = data.filter((v,i) => { return i != itemId });
-        newData = JSON.stringify(newData);
-        localStorage.setItem('msg',newData);
-        listTodo();
-      }else{
-        alert("no data found");
-      }
-
-    } 
-    
-    */
+    // Load messages when the page loads
+    window.onload = displayMessages;
   </script>
 </body>
 

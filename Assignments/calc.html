@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Calculator</title>
+  
+  <style>
+    
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #a0d7ff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator {
+  display: grid;
+  grid-template-rows:
+    minmax(80px, auto)
+    repeat(5, 60px);
+  grid-template-columns: repeat(4, 60px);
+  justify-content: center;
+  background-color: hsl(220, 6%, 10%);
+  padding: 1.4rem;
+  border-radius: 12px;
+  gap: 0.7rem;
+}
+.calculator button {
+  border: none;
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: hsl(204, 100%, 58%);
+  background-color: hsl(230, 6%, 20%);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.calculator button:hover {
+  background-color: hsl(230, 6%, 30%);
+}
+.span-2 {
+  grid-column: span 2;
+}
+.calculator > .output {
+  font-size: 2rem;
+  background-color: inherit;
+  color: white;
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  word-break: break-all;
+  border-radius: inherit;
+}
+
+.output .prev-display {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: hsl(0, 0%, 65%);
+}
+    
+  </style>
+</head>
+
+<body>
+  
+    <div class="calculator">
+      <div class="output">
+        <div class="prev-display"></div>
+        <div class="curr-display"></div>
+      </div>
+      <button class="span-2 clear">AC</button>
+      <button class="delete">DEL</button>
+      <button class="operation">/</button>
+      <button class="number">1</button>
+      <button class="number">2</button>
+      <button class="number">3</button>
+      <button class="operation">+</button>
+      <button class="number">4</button>
+      <button class="number">5</button>
+      <button class="number">6</button>
+      <button class="operation">-</button>
+      <button class="number">7</button>
+      <button class="number">8</button>
+      <button class="number">9</button>
+      <button class="operation">*</button>
+      <button class="number">.</button>
+      <button class="number">0</button>
+      <button class="span-2 equal">=</button>
+    </div>
+
+  <script>
+    
+    const currDisplay = document.querySelector(".curr-display");
+const prevDisplay = document.querySelector(".prev-display");
+const numbers = document.querySelectorAll(".number");
+const operands = document.querySelectorAll(".operation");
+const clearBtn = document.querySelector(".clear");
+const delBtn = document.querySelector(".delete");
+const equalBtn = document.querySelector(".equal");
+let operation;
+
+function appendNumber(number) {
+  if (number === "." && currDisplay.innerText.includes(".")) return;
+  currDisplay.innerText += number;
+}
+
+function chooseOperation(operand) {
+  if (currDisplay.innerText === "") return;
+  compute(operand);
+  operation = operand;
+  currDisplay.innerText += operand;
+  prevDisplay.innerText = currDisplay.innerText;
+  currDisplay.innerText = "";
+}
+
+function clearDisplay() {
+  currDisplay.innerText = "";
+  prevDisplay.innerText = "";
+}
+
+function compute(operand) {
+  let result;
+  const previousValue = parseFloat(prevDisplay.innerText);
+  const currentValue = parseFloat(currDisplay.innerText);
+
+  if (isNaN(previousValue) || isNaN(currentValue)) return;
+
+  switch (operation) {
+    case "+":
+      result = previousValue + currentValue;
+      break;
+    case "-":
+      result = previousValue - currentValue;
+      break;
+    case "*":
+      result = previousValue * currentValue;
+      break;
+    case "/":
+      result = previousValue / currentValue;
+      break;
+    default:
+      return;
+  }
+  currDisplay.innerText = result;
+}
+
+numbers.forEach((number) => {
+  number.addEventListener("click", () => {
+    appendNumber(number.innerText);
+  });
+});
+
+operands.forEach((operand) => {
+  operand.addEventListener("click", () => {
+    chooseOperation(operand.innerText);
+  });
+});
+
+clearBtn.addEventListener("click", () => {
+  clearDisplay();
+});
+
+equalBtn.addEventListener("click", () => {
+  compute();
+  prevDisplay.innerText = "";
+});
+
+delBtn.addEventListener("click", () => {
+  currDisplay.innerText = currDisplay.innerText.slice(0, -1);
+});
+    
+  </script>
+</body>
+
+</html>
